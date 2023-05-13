@@ -1,7 +1,7 @@
 from diator.requests import RequestHandler
 from diator.events import Event
 
-from meetings.application.common.ports.gateways.participant_gateway import ParticipantGatewayPort
+from meetings.application.common.ports.gateways import ParticipantGatewayPort
 
 from .join_meeting_command import JoinMeetingCommand
 from .user_joined_ecst_event import UserJoinedECSTEvent
