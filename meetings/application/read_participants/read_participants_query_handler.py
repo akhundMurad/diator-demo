@@ -2,7 +2,6 @@ from diator.requests import RequestHandler
 from diator.events import Event
 
 from meetings.application.common.ports.gateways import ParticipantGatewayPort
-from meetings.application.read_participants.read_participants_query import ReadParticipantsQuery
 
 from .read_participants_query import ReadParticipantsQuery
 from .read_participants_query_result import ReadParticipantsQueryResult, Participant

@@ -12,6 +12,10 @@ class UUIDIdentity(IdentityProtocol[UUID]):
     def value_generator(self) -> Callable[[], UUID]:
         return uuid4
 
+    @property
+    def value(self) -> UUID:
+        return self._value
+
     @classmethod
     def from_string(cls, plain_str: str) -> "UUIDIdentity":
         return cls(value=UUID(plain_str))

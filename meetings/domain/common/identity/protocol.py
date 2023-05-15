@@ -8,6 +8,10 @@ class IdentityProtocol(Protocol[IdentityType]):
     def value_generator(self) -> Callable[[], IdentityType]:
         raise NotImplementedError
 
+    @property
+    def value(self) -> IdentityType:
+        raise NotImplementedError
+
     @classmethod
     def from_string(cls, plain_str: str) -> "IdentityProtocol":
         raise NotImplementedError
