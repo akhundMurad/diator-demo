@@ -33,5 +33,6 @@ class ParticipantGateway(ParticipantGatewayPort):
                 participants.append(
                     ParticipantDTO(user_id=row[0], greetings=row[1])
                 )
+            await persistence_manager.commit()
 
         return participants
