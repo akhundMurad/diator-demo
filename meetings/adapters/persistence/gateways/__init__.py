@@ -1,4 +1,4 @@
-from .participant_gateway import PersistenceManager
+from .participant_gateway import ParticipantGateway
 
 
-__all__ = ("PersistenceManager",)
+__all__ = ("ParticipantGateway",)
