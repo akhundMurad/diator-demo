@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 from diator.events import ECSTEvent
 
 from meetings.domain.common.identity import Identity

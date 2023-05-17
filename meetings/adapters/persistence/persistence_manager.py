@@ -1,6 +1,6 @@
 import logging
 
-from sqlalchemy import text, Result
+from sqlalchemy import Result, text
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import sessionmaker
 

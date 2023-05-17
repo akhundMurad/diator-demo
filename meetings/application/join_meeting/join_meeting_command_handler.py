@@ -1,5 +1,5 @@
-from diator.requests import RequestHandler
 from diator.events import Event
+from diator.requests import RequestHandler
 
 from meetings.application.common.ports.gateways import ParticipantGatewayPort
 
@@ -13,5 +13,7 @@ class JoinMeetingCommandHandler(RequestHandler[JoinMeetingCommand, None]):
         self.events: list[Event] = []
 
     async def handle(self, request: JoinMeetingCommand) -> None:
-        await self._participant_gateway.insert(user_id=request.user_id, meeting_id=request.meeting_id, greetings=request.greetings)
+        await self._participant_gateway.insert(
+            user_id=request.user_id, meeting_id=request.meeting_id, greetings=request.greetings
+        )
         self.events.append(UserJoinedECSTEvent(meeting_id=request.meeting_id, new_user_id=request.user_id))

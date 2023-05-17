@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+
 from diator.response import Response
 
 from meetings.domain.common.identity import Identity

@@ -1,8 +1,7 @@
 import os
 from dataclasses import dataclass, field
-from typing import Type, Any, TypeVar
 from functools import partial
-
+from typing import Any, Type, TypeVar
 
 T = TypeVar("T")
 

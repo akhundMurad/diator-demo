@@ -1,10 +1,16 @@
+from diator.container.rodi import RodiContainer
 from diator.mediator import Mediator
 from diator.requests import RequestMap
-from diator.container.rodi import RodiContainer
 
+from meetings.application.join_meeting import (
+    JoinMeetingCommand,
+    JoinMeetingCommandHandler,
+)
+from meetings.application.read_participants import (
+    ReadParticipantsQuery,
+    ReadParticipantsQueryHandler,
+)
 from meetings.di import build_container
-from meetings.application.join_meeting import JoinMeetingCommand, JoinMeetingCommandHandler
-from meetings.application.read_participants import ReadParticipantsQuery, ReadParticipantsQueryHandler
 
 
 def get_container() -> RodiContainer:
@@ -14,7 +20,6 @@ def get_container() -> RodiContainer:
     rodi_container.attach_external_container(external_container)
 
     return rodi_container
-
 
 
 def build_mediator() -> Mediator:

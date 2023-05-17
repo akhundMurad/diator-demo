@@ -1,12 +1,12 @@
-from rodi import Container, ActivationScope, ServiceLifeStyle
-from sqlalchemy.orm import sessionmaker
+from rodi import ActivationScope, Container, ServiceLifeStyle
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, create_async_engine
+from sqlalchemy.orm import sessionmaker
 
-from meetings.application.read_participants import ReadParticipantsQueryHandler
-from meetings.application.join_meeting import JoinMeetingCommandHandler
-from meetings.application.common.ports.gateways import ParticipantGatewayPort
 from meetings.adapters.persistence.gateways import ParticipantGateway
 from meetings.adapters.persistence.persistence_manager import PersistenceManager
+from meetings.application.common.ports.gateways import ParticipantGatewayPort
+from meetings.application.join_meeting import JoinMeetingCommandHandler
+from meetings.application.read_participants import ReadParticipantsQueryHandler
 from meetings.config import DatabaseConfig
 
 
@@ -36,7 +36,7 @@ def build_container() -> Container:
     container.register_factory(provide_persistence_manager, PersistenceManager, life_style=ServiceLifeStyle.TRANSIENT)
 
     container.bind_types(ParticipantGatewayPort, ParticipantGateway)
-    
+
     container.register(JoinMeetingCommandHandler)
     container.register(ReadParticipantsQueryHandler)
 
