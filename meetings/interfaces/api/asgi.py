@@ -6,6 +6,8 @@ from openapidocs.v3 import Info
 from meetings.application.mediator import build_mediator
 from meetings.di import build_container
 
+from .controllers import Participants, Meeting  # noqa
+
 
 def build_asgi() -> Application:
     container = build_container()
@@ -14,7 +16,7 @@ def build_asgi() -> Application:
 
     app = Application(services=container)
 
-    docs = OpenAPIHandler(info=Info(title="Attendance Reporter API", version="0.0.1"))
+    docs = OpenAPIHandler(info=Info(title="Meetings API", version="0.0.1"))
     docs.bind_app(app)
 
     return app

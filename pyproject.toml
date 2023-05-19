@@ -13,6 +13,10 @@ falcon = "^3.1.1"
 rodi = "^2.0.2"
 sqlalchemy = "^2.0.13"
 blacksheep = "2.0a6"
+markupsafe = "^2.1.2"
+uvicorn = "^0.22.0"
+setuptools = "^67.7.2"
+asyncpg = "^0.27.0"
 
 
 [tool.poetry.group.test.dependencies]

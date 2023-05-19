@@ -10,7 +10,11 @@ from .read_participants_query_result import Participant, ReadParticipantsQueryRe
 class ReadParticipantsQueryHandler(RequestHandler[ReadParticipantsQuery, ReadParticipantsQueryResult]):
     def __init__(self, participant_gateway: ParticipantGatewayPort) -> None:
         self._participant_gateway = participant_gateway
-        self.events: list[Event] = []
+        self._events: list[Event] = []
+
+    @property
+    def events(self) -> list[Event]:
+        return self._events
 
     async def handle(self, request: ReadParticipantsQuery) -> ReadParticipantsQueryResult:
         query_result = ReadParticipantsQueryResult(meeting_id=request.meeting_id, participants=[])

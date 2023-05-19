@@ -11,3 +11,7 @@ fix-linting:
 
 test:
 	poetry run pytest -v
+
+
+run-dev:
+	uvicorn meetings.interfaces.api.asgi:build_asgi --factory

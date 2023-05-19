@@ -8,6 +8,8 @@ T = TypeVar("T")
 
 def _get_from_env(var_name: str, type_: Type[T], *, default: Any | None = None) -> T:
     value = os.getenv(var_name, default)
+    if value is None:
+        raise RuntimeError(f"{var_name} is empty.")
     return type_(value)  # type: ignore
 
 

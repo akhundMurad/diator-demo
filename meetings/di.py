@@ -13,7 +13,7 @@ from meetings.config import DatabaseConfig
 def provide_sa_engine(scope: ActivationScope) -> AsyncEngine:
     config: DatabaseConfig = scope.provider.get(DatabaseConfig)
 
-    return create_async_engine(config.DATABASE_CONNECTION_STRING)
+    return create_async_engine(config.connection_string)
 
 
 def provide_sa_sessionmaker(scope: ActivationScope) -> sessionmaker:
@@ -27,10 +27,14 @@ def provide_persistence_manager(scope: ActivationScope) -> PersistenceManager:
     return PersistenceManager(session_factory=session_factory)
 
 
+def provide_database_config(scope: ActivationScope) -> DatabaseConfig:
+    return DatabaseConfig()
+
+
 def build_container() -> Container:
     container = Container()
 
-    container.register(DatabaseConfig)
+    container.register_factory(provide_database_config, DatabaseConfig, life_style=ServiceLifeStyle.TRANSIENT)
     container.register_factory(provide_sa_engine, AsyncEngine, life_style=ServiceLifeStyle.TRANSIENT)
     container.register_factory(provide_sa_sessionmaker, sessionmaker, life_style=ServiceLifeStyle.TRANSIENT)
     container.register_factory(provide_persistence_manager, PersistenceManager, life_style=ServiceLifeStyle.TRANSIENT)

@@ -10,7 +10,11 @@ from .user_joined_ecst_event import UserJoinedECSTEvent
 class JoinMeetingCommandHandler(RequestHandler[JoinMeetingCommand, None]):
     def __init__(self, participant_gateway: ParticipantGatewayPort) -> None:
         self._participant_gateway = participant_gateway
-        self.events: list[Event] = []
+        self._events: list[Event] = []
+
+    @property
+    def events(self) -> list[Event]:
+        return self._events
 
     async def handle(self, request: JoinMeetingCommand) -> None:
         await self._participant_gateway.insert(
