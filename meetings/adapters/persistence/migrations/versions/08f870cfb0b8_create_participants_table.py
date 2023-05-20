@@ -18,11 +18,13 @@ depends_on = None
 def upgrade() -> None:
     op.create_table(
         "participants",
+        sa.Column("participant_id", sa.BigInteger(), primary_key=True),
+        sa.Column("external_id", sa.UUID(as_uuid=True), nullable=False, unique=True),
         sa.Column("meeting_id", sa.BigInteger(), nullable=False),
-        sa.Column("user_id", sa.UUID(as_uuid=True), nullable=False),
+        sa.Column("user_id", sa.BigInteger(), nullable=False),
         sa.Column("greetings", sa.CHAR(length=64), nullable=False),
-        sa.PrimaryKeyConstraint("meeting_id"),
-        sa.PrimaryKeyConstraint("user_id"),
+        sa.ForeignKeyConstraint(("meeting_id",), ("meetings.meeting_id",)),
+        sa.ForeignKeyConstraint(("user_id",), ("users.user_id",)),
     )
 
 
