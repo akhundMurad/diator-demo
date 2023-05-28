@@ -18,8 +18,7 @@ depends_on = None
 def upgrade() -> None:
     op.create_table(
         "users",
-        sa.Column("user_id", sa.BigInteger(), nullable=False, primary_key=True),
-        sa.Column("external_id", sa.UUID(as_uuid=True), nullable=False, unique=True),
+        sa.Column("user_id", sa.UUID(as_uuid=True), nullable=False, primary_key=True),
         sa.Column("first_name", sa.CHAR(length=128), nullable=False),
         sa.Column("last_name", sa.CHAR(length=128), nullable=False),
     )
