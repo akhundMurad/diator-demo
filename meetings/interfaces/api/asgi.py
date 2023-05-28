@@ -7,8 +7,8 @@ from openapidocs.v3 import Info
 from meetings.application.mediator import build_mediator
 from meetings.di import build_container
 
-from .serialization import dumps, pretty_dumps
 from .controllers import Meeting, Participants  # noqa
+from .serialization import dumps, pretty_dumps
 
 
 def build_asgi() -> Application:

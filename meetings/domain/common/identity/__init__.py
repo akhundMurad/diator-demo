@@ -1,5 +1,5 @@
-from .uuid import UUIDIdentity
 from .protocol import IdentityProtocol
+from .uuid import UUIDIdentity
 
 Identity = UUIDIdentity
 

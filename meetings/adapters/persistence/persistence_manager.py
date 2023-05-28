@@ -1,12 +1,11 @@
 import logging
 
 from sqlalchemy import Result, text
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 
 class PersistenceManager:
-    def __init__(self, session_factory: sessionmaker) -> None:
+    def __init__(self, session_factory: async_sessionmaker) -> None:
         self._session_factory = session_factory
 
     async def __aenter__(self) -> "PersistenceManager":

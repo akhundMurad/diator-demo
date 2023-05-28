@@ -8,9 +8,7 @@ class ParticipantGateway(ParticipantGatewayPort):
     def __init__(self, persistence_manager: PersistenceManager) -> None:
         self._persistence_manager = persistence_manager
 
-    async def insert(
-        self, *, user_id: Identity, meeting_id: Identity, greetings: str
-    ) -> None:
+    async def insert(self, *, user_id: Identity, meeting_id: Identity, greetings: str) -> None:
         statement = """
         INSERT INTO participants(user_id, meeting_id, greetings)
         VALUES(:user_id, :meeting_id, :greetings)
@@ -31,9 +29,7 @@ class ParticipantGateway(ParticipantGatewayPort):
         """
         participants = []
         async with self._persistence_manager as persistence_manager:
-            rows = await persistence_manager.execute(
-                statement, meeting_id=meeting_id.value
-            )
+            rows = await persistence_manager.execute(statement, meeting_id=meeting_id.value)
             for row in rows:
                 participants.append(ParticipantDTO(user_id=row[0], greetings=row[1]))
             await persistence_manager.commit()

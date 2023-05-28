@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-diator = {extras = ["azure"], version = "^0.1.2"}
+diator = { extras = ["azure"], version = "^0.1.2" }
 dataclass-factory = "^2.16"
 falcon = "^3.1.1"
 rodi = "^2.0.2"
@@ -22,6 +22,7 @@ alembic = "^1.11.1"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
+testcontainers-postgres = "^0.0.1rc1"
 
 
 [tool.poetry.group.lint.dependencies]
