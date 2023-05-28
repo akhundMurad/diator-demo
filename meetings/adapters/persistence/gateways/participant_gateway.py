@@ -26,7 +26,7 @@ class ParticipantGateway(ParticipantGatewayPort):
     async def find_by_meeting_id(self, *, meeting_id: Identity) -> list[ParticipantDTO]:
         statement = f"""
         SELECT user_id, greetings FROM {self._table_name}
-        WHERE meeting_id = :meeting_id
+        WHERE external_id = :meeting_id
         """
         participants = []
         async with self._persistence_manager as persistence_manager:
